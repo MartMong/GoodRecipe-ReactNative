@@ -15,6 +15,7 @@ import {
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import Category from './components/Category';
+import Home from './components/Home';
 
 const { height, width } = Dimensions.get('window');
 
@@ -121,8 +122,16 @@ class Explore extends Component {
                     style={{flex:1,height:null,width:null,resizeMode:'cover',borderWidth:1,borderRadius:5,borderColor:'#dddddd'}}
                   />
                 </View>
-            
-
+                <View style={{marginTop:40}}>
+                  <Text style={{fontSize:24,fontWeight:'700',paddingHorizontal:20}}>
+                    Home around the world
+                  </Text>
+                  <View style={{paddingHorizontal:20,marginTop:20,flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between'}}>
+                    <Home width={width}/>
+                    <Home width={width}/>
+                    <Home width={width}/>
+                  </View>
+                </View>
               </View>
             </View>
           </ScrollView>

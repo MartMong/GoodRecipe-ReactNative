@@ -40,55 +40,8 @@ class Explore extends Component {
     }
   }
 
-  componentDidMount() {
-
-  }
-
-  createCategory() {
-    axios.get(Env.apiUrl, {
-      params: {
-        key: Env.api_key,
-        page: '1'
-      }
-    }).then(res => {
-      // console.log(11111111,res.data.recipes)
-      // this.setState({data:res.data})
-
-      if (res.data != undefined) {
-        console.log(res.data)
-        let Categorys = res.data.recipes.map((item, key) => {
-          console.log(3333333)
-          return (<Category key={item.recipe_id} imageUri={item.image_url} name={item.title} />)
-        })
-        console.log(Categorys)
-        console.log(
-          <Category
-            imageUri='http://static.food2fork.com/4515542dbb.jpg'
-            name='Zesty Slow Cooker Chicken Barbeque'
-          />)
-        return (<ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-        >
-          {/* {Categorys} */}
-          <Category
-            imageUri='http://static.food2fork.com/4515542dbb.jpg'
-            name='Zesty Slow Cooker Chicken Barbeque'
-          />
-          <Category
-            imageUri='https://www.w3schools.com/w3css/img_lights.jpg'
-            name='Home1'
-          />
-          <Category
-            imageUri='https://www.w3schools.com/w3css/img_lights.jpg'
-            name='Home2'
-          />
-        </ScrollView>)
-      }
-    })
-  }
-
   render() {
+    console.log(this.props.navigation)
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
@@ -154,12 +107,13 @@ class Explore extends Component {
                   showsHorizontalScrollIndicator={false}
                 >
                   <Category
-                    key = '34889'
+                    onPress={()=>this.props.navigation.navigate('RecipeDetails')}
+                    key='34889'
                     imageUri='http://static.food2fork.com/4515542dbb.jpg'
                     name='Zesty Slow Cooker Chicken Barbeque'
                   />
                   <Category
-                    key = '2803'
+                    key='2803'
                     imageUri='http://static.food2fork.com/124030cedd.jpg'
                     name='Banana Crumb Muffins'
                   />
@@ -191,7 +145,7 @@ class Explore extends Component {
                   Introducing GoodRecipe
                     </Text>
                 <Text style={{ fontWeight: '100', marginTop: 10 }}>
-                 Find new Recipe with your new eats
+                  Find new Recipe with your new eats
                 </Text>
                 <View style={{ width: width - 40, height: 200, marginTop: 20 }}>
                   <Image
@@ -204,7 +158,7 @@ class Explore extends Component {
                     Recommended for You
                   </Text>
                   <View style={{ paddingHorizontal: 20, marginTop: 20, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-                    <Home 
+                    <Home
                       key='35382'
                       imageUri='http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg'
                       name='Jalapeno Popper Grilled Cheese Sandwich'
@@ -212,7 +166,7 @@ class Explore extends Component {
                       publisher='Closet Cooking'
                       width={width}
                     />
-                    <Home 
+                    <Home
                       key='47024'
                       imageUri='http://static.food2fork.com/icedcoffee5766.jpg'
                       name='Perfect Iced Coffee'
@@ -220,7 +174,7 @@ class Explore extends Component {
                       publisher='The Pioneer Woman'
                       width={width}
                     />
-                    <Home 
+                    <Home
                       key='47319'
                       imageUri='http://static.food2fork.com/CrashHotPotatoes5736.jpg'
                       name='Crash Hot Potatoes'
@@ -228,7 +182,7 @@ class Explore extends Component {
                       publisher='The Pioneer Woman'
                       width={width}
                     />
-                    
+
                   </View>
                 </View>
               </View>
@@ -239,6 +193,52 @@ class Explore extends Component {
     )
   }
 }
+
+// createCategory() {
+//   axios.get(Env.apiUrl, {
+//     params: {
+//       key: Env.api_key,
+//       page: '1'
+//     }
+//   }).then(res => {
+//     // console.log(11111111,res.data.recipes)
+//     // this.setState({data:res.data})
+
+//     if (res.data != undefined) {
+//       console.log(res.data)
+//       let Categorys = res.data.recipes.map((item, key) => {
+//         console.log(3333333)
+//         return (<Category key={item.recipe_id} imageUri={item.image_url} name={item.title} />)
+//       })
+//       console.log(Categorys)
+//       console.log(
+//         <Category
+//           imageUri='http://static.food2fork.com/4515542dbb.jpg'
+//           name='Zesty Slow Cooker Chicken Barbeque'
+//         />)
+//       return (<ScrollView
+//         horizontal={true}
+//         showsHorizontalScrollIndicator={false}
+//       >
+//         {/* {Categorys} */}
+//         <Category
+//           imageUri='http://static.food2fork.com/4515542dbb.jpg'
+//           name='Zesty Slow Cooker Chicken Barbeque'
+//         />
+//         <Category
+//           imageUri='https://www.w3schools.com/w3css/img_lights.jpg'
+//           name='Home1'
+//         />
+//         <Category
+//           onPress={() => this.props.navigation.navigate('RecipeDetails')}
+//           imageUri='https://www.w3schools.com/w3css/img_lights.jpg'
+//           name='Home2'
+//         />
+//       </ScrollView>)
+//     }
+//   })
+// }
+
 
 export default Explore;
 

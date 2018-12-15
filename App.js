@@ -6,9 +6,12 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import Explore from './screens/Explore';
 import Saved from './screens/Saved';
 
+import initNavigation from './navigations/initNavigation';
+import ExploreNavigation from './navigations/ExploreNavigation';
+
 const RootStack =  createBottomTabNavigator({
   Explore: {
-    screen: Explore,
+    screen: ExploreNavigation,
     navigationOptions:{
       tabBarLabel:'EXPLORE',
       tabBarIcon : ({tintColor}) => (

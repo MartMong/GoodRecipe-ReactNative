@@ -1,35 +1,36 @@
-// import React,{Component} from 'react';
-// import {
-//   View,
-//   Text,
-//   StyleSheet
-// } from 'react-native';
-
-// class RecipeDetail extends Component {
-//   render(){
-//     return(
-//       <View style={styles.container}>
-//         <Text>RecipeDetail</Text>
-//       </View>
-//     )
-//   }
-// }
-
-// export default RecipeDetail;
-
-// const styles = StyleSheet.create({
-//   container:{
-//     flex:1,
-//     alignItems:'center',
-//     justifyContent:'center'
-//   }
-// })
-
-
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
 
+import axios from 'axios';
+
+import Env from '../environment';
+
 export default class RecipeDetail extends Component {
+
+  state={
+    title:'',
+    ingredients:'',
+    image_url:'',
+    publisher:''
+  }
+
+  componentDidMount(){
+    const { navigation } = this.props;
+    const keyId = navigation.getParam('keyId', 'NO-ID');
+
+    axios.get('https://www.food2fork.com/api/get', {
+      params: {
+        key: Env.api_key,
+        rId: keyId
+      }
+    }).then(res => {
+      const {title,ingredients,image_url,publisher} = res.data.recipe;
+      this.setState({title,ingredients,image_url,publisher})
+    })
+
+  }
+
+
   render() {
     return (
       <ScrollView
@@ -39,22 +40,22 @@ export default class RecipeDetail extends Component {
         <View style={styles.author}>
           <Image
             style={styles.avatar}
-            // source={require('../../assets/avatar-1.png')}
+          // source={require('../../assets/avatar-1.png')}
           />
           <View style={styles.meta}>
-            <Text style={styles.name}>Knowledge Bot</Text>
+            <Text style={styles.name}>{this.state.publisher}</Text>
             <Text style={styles.timestamp}>1st Jan 2025</Text>
           </View>
         </View>
-        <Text style={styles.title}>Lorem Ipsum</Text>
+        <Text style={styles.title}>{this.state.title}</Text>
         <Text style={styles.paragraph}>
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC, making
           it over 2000 years old.
         </Text>
-        <Image style={styles.image} 
-        // source={require('../../assets/book.jpg')}
-         />
+        <Image style={styles.image}
+        source={{uri:this.state.image_url}}
+        />
         <Text style={styles.paragraph}>
           Richard McClintock, a Latin professor at Hampden-Sydney College in
           Virginia, looked up one of the more obscure Latin words, consectetur,

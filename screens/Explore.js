@@ -107,33 +107,35 @@ class Explore extends Component {
                   showsHorizontalScrollIndicator={false}
                 >
                   <Category
-                    onPress={()=>this.props.navigation.navigate('RecipeDetails')}
-                    key='34889'
+                    onPress={()=>this.props.navigation.navigate('RecipeDetails',{
+                      keyId:'34889' 
+                    })}
+                    keyId='34889'
                     imageUri='http://static.food2fork.com/4515542dbb.jpg'
                     name='Zesty Slow Cooker Chicken Barbeque'
                   />
                   <Category
-                    key='2803'
+                    keyId='2803'
                     imageUri='http://static.food2fork.com/124030cedd.jpg'
                     name='Banana Crumb Muffins'
                   />
                   <Category
-                    key='29159'
+                    keyId='29159'
                     imageUri='http://static.food2fork.com/19321150c4.jpg'
                     name='Slow Cooker Chicken Tortilla Soup'
                   />
                   <Category
-                    key='3620'
+                    keyId='3620'
                     imageUri='http://static.food2fork.com/720553ee26.jpg'
                     name='Best Brownies'
                   />
                   <Category
-                    key='35760'
+                    keyId='35760'
                     imageUri='http://static.food2fork.com/banana_bread300x2000a14c8c5.jpeg'
                     name='Easy Shepherd'
                   />
                   <Category
-                    key='41766'
+                    keyId='41766'
                     imageUri='http://static.food2fork.com/4307514771_c089bbd71017f42.jpg'
                     name='Restaurant Style Salsa'
                   />
@@ -159,7 +161,7 @@ class Explore extends Component {
                   </Text>
                   <View style={{ paddingHorizontal: 20, marginTop: 20, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
                     <Home
-                      key='35382'
+                      keyId='35382'
                       imageUri='http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg'
                       name='Jalapeno Popper Grilled Cheese Sandwich'
                       head='Recommend'
@@ -167,7 +169,7 @@ class Explore extends Component {
                       width={width}
                     />
                     <Home
-                      key='47024'
+                      keyId='47024'
                       imageUri='http://static.food2fork.com/icedcoffee5766.jpg'
                       name='Perfect Iced Coffee'
                       head='Hot'
@@ -175,7 +177,7 @@ class Explore extends Component {
                       width={width}
                     />
                     <Home
-                      key='47319'
+                      keyId='47319'
                       imageUri='http://static.food2fork.com/CrashHotPotatoes5736.jpg'
                       name='Crash Hot Potatoes'
                       head='Hot'

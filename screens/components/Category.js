@@ -9,13 +9,12 @@ import {
 
 class Category extends Component {
     render() {
-        console.log(11111111111111111111,this.props)
+        console.log(11111111,this.props.keyId)
         return (
             <TouchableOpacity onPress={this.props.onPress}>
             <View
                 style={{ width: 130, height: 140, marginLeft: 21, borderWidth: 0.5, borderColor: '#dddddd' }}
             >
-
                     <View style={{ flex: 2 }}>
                         <Image
                             source={{ uri: this.props.imageUri }}

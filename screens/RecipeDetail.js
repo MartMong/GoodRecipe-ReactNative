@@ -7,14 +7,15 @@ import Env from '../environment';
 
 export default class RecipeDetail extends Component {
 
-  state={
-    title:'',
-    ingredients:'',
-    image_url:'',
-    publisher:''
+  state = {
+    title: '',
+    ingredients: [],
+    image_url: '',
+    publisher: ''
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    console.log('component did mount')
     const { navigation } = this.props;
     const keyId = navigation.getParam('keyId', 'NO-ID');
 
@@ -24,14 +25,23 @@ export default class RecipeDetail extends Component {
         rId: keyId
       }
     }).then(res => {
-      const {title,ingredients,image_url,publisher} = res.data.recipe;
-      this.setState({title,ingredients,image_url,publisher})
-    })
+      const { title, ingredients, image_url, publisher } = res.data.recipe;
+      console.log('set state')
+      this.setState({ title, ingredients, image_url, publisher })
+    }).catch(e => console.log(e))
 
   }
 
+  renderIngredient() {
+    let result = this.state.ingredients.map((item, index) => <Text style={styles.paragraph} key={index}>{item.text}</Text>);
+    console.log(this.state.ingredients)
+    console.log(result)
+    console.log('------------------------------')
+    return result
+  }
 
   render() {
+    // console.log(this.renderIngredient())
     return (
       <ScrollView
         style={styles.container}
@@ -48,26 +58,20 @@ export default class RecipeDetail extends Component {
           </View>
         </View>
         <Text style={styles.title}>{this.state.title}</Text>
-        <Text style={styles.paragraph}>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making
-          it over 2000 years old.
-        </Text>
         <Image style={styles.image}
-        source={{uri:this.state.image_url}}
+          source={{ uri: this.state.image_url }}
         />
-        <Text style={styles.paragraph}>
-          Richard McClintock, a Latin professor at Hampden-Sydney College in
-          Virginia, looked up one of the more obscure Latin words, consectetur,
-          from a Lorem Ipsum passage, and going through the cites of the word in
-          classical literature, discovered the undoubtable source.
+        <Text style={{
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: 28,
+          marginVertical: 8,
+          marginHorizontal: 16,
+        }}>
+          Ingredient
         </Text>
         <Text style={styles.paragraph}>
-          Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-          Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written
-          in 45 BC. This book is a treatise on the theory of ethics, very
-          popular during the Renaissance. The first line of Lorem Ipsum, "Lorem
-          ipsum dolor sit amet..", comes from a line in section 1.10.32.
+          {this.state.ingredients}
         </Text>
       </ScrollView>
     );
@@ -122,7 +126,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 200,
+    height: 300,
     resizeMode: 'cover',
     marginVertical: 8,
   },

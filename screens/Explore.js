@@ -107,34 +107,49 @@ class Explore extends Component {
                   showsHorizontalScrollIndicator={false}
                 >
                   <Category
-                    onPress={()=>this.props.navigation.navigate('RecipeDetails',{
-                      keyId:'34889' 
+                    onPress={() => this.props.navigation.navigate('RecipeDetails', {
+                      keyId: '34889'
                     })}
                     keyId='34889'
                     imageUri='http://static.food2fork.com/4515542dbb.jpg'
                     name='Zesty Slow Cooker Chicken Barbeque'
                   />
                   <Category
+                    onPress={() => this.props.navigation.navigate('RecipeDetails', {
+                      keyId: '2803'
+                    })}
                     keyId='2803'
                     imageUri='http://static.food2fork.com/124030cedd.jpg'
                     name='Banana Crumb Muffins'
                   />
                   <Category
+                    onPress={() => this.props.navigation.navigate('RecipeDetails', {
+                      keyId: '29159'
+                    })}
                     keyId='29159'
                     imageUri='http://static.food2fork.com/19321150c4.jpg'
                     name='Slow Cooker Chicken Tortilla Soup'
                   />
                   <Category
+                    onPress={() => this.props.navigation.navigate('RecipeDetails', {
+                      keyId: '3620'
+                    })}
                     keyId='3620'
                     imageUri='http://static.food2fork.com/720553ee26.jpg'
                     name='Best Brownies'
                   />
                   <Category
+                    onPress={() => this.props.navigation.navigate('RecipeDetails', {
+                      keyId: '35760'
+                    })}
                     keyId='35760'
                     imageUri='http://static.food2fork.com/banana_bread300x2000a14c8c5.jpeg'
                     name='Easy Shepherd'
                   />
                   <Category
+                    onPress={() => this.props.navigation.navigate('RecipeDetails', {
+                      keyId: '41766'
+                    })}
                     keyId='41766'
                     imageUri='http://static.food2fork.com/4307514771_c089bbd71017f42.jpg'
                     name='Restaurant Style Salsa'

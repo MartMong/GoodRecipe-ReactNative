@@ -8,24 +8,25 @@ import {
 
 class Home extends Component {
     render() {
+        console.log(this.props)
         return (
             <View style={{ width: 0.75*(this.props.width / 2) , height: 0.75*(this.props.width/ 2), borderWidth: 0.5, borderColor: '#dddddd' }}>
                 <View style={{ flex: 1 }}>
                     <Image
-                        source={{ uri: 'https://www.w3schools.com/w3css/img_lights.jpg' }}
+                        source={{ uri: this.props.imageUri }}
                         style={{ flex: 1, width: null, height: null, resizeMode: 'cover' }}
                     />
                 </View>
                 <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'space-evenly', paddingLeft: 10 }}>
                     <Text style={{ fontSize: 10, color: '#b63838' }}>
-                        PRIVATE ROOM - 2 BEDS
+                        {this.props.head}
                         </Text>
                     <Text style={{ fontSize: 12, fontWeight: 'bold' }}>
-                        The Cozy Place
+                        {this.props.name}
                         </Text>
                     <Text style={{ fontSize: 10 }}>
-                        82$
-                        </Text>
+                        {this.props.publisher}
+                    </Text>
                 </View>
             </View>
         )

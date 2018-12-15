@@ -12,14 +12,25 @@ import {
   Dimensions
 
 } from 'react-native';
+import axios from 'axios';
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import Category from './components/Category';
 import Home from './components/Home';
 
+import Env from '../environment';
+
 const { height, width } = Dimensions.get('window');
 
 class Explore extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: "",
+    };
+  }
+
 
   componentWillMount() {
     if (Platform.OS == 'ios') {
@@ -29,6 +40,53 @@ class Explore extends Component {
     }
   }
 
+  componentDidMount() {
+
+  }
+
+  createCategory() {
+    axios.get(Env.apiUrl, {
+      params: {
+        key: Env.api_key,
+        page: '1'
+      }
+    }).then(res => {
+      // console.log(11111111,res.data.recipes)
+      // this.setState({data:res.data})
+
+      if (res.data != undefined) {
+        console.log(res.data)
+        let Categorys = res.data.recipes.map((item, key) => {
+          console.log(3333333)
+          return (<Category key={item.recipe_id} imageUri={item.image_url} name={item.title} />)
+        })
+        console.log(Categorys)
+        console.log(
+          <Category
+            imageUri='http://static.food2fork.com/4515542dbb.jpg'
+            name='Zesty Slow Cooker Chicken Barbeque'
+          />)
+        return (<ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        >
+          {/* {Categorys} */}
+          <Category
+            imageUri='http://static.food2fork.com/4515542dbb.jpg'
+            name='Zesty Slow Cooker Chicken Barbeque'
+          />
+          <Category
+            imageUri='https://www.w3schools.com/w3css/img_lights.jpg'
+            name='Home1'
+          />
+          <Category
+            imageUri='https://www.w3schools.com/w3css/img_lights.jpg'
+            name='Home2'
+          />
+        </ScrollView>)
+      }
+    })
+  }
 
   render() {
     return (
@@ -96,40 +154,81 @@ class Explore extends Component {
                   showsHorizontalScrollIndicator={false}
                 >
                   <Category
-                    imageUri='https://www.w3schools.com/w3css/img_lights.jpg'
-                    name='Home'
+                    key = '34889'
+                    imageUri='http://static.food2fork.com/4515542dbb.jpg'
+                    name='Zesty Slow Cooker Chicken Barbeque'
                   />
                   <Category
-                    imageUri='https://www.w3schools.com/w3css/img_lights.jpg'
-                    name='Home1'
+                    key = '2803'
+                    imageUri='http://static.food2fork.com/124030cedd.jpg'
+                    name='Banana Crumb Muffins'
                   />
                   <Category
-                    imageUri='https://www.w3schools.com/w3css/img_lights.jpg'
-                    name='Home2'
+                    key='29159'
+                    imageUri='http://static.food2fork.com/19321150c4.jpg'
+                    name='Slow Cooker Chicken Tortilla Soup'
                   />
+                  <Category
+                    key='3620'
+                    imageUri='http://static.food2fork.com/720553ee26.jpg'
+                    name='Best Brownies'
+                  />
+                  <Category
+                    key='35760'
+                    imageUri='http://static.food2fork.com/banana_bread300x2000a14c8c5.jpeg'
+                    name='Easy Shepherd'
+                  />
+                  <Category
+                    key='41766'
+                    imageUri='http://static.food2fork.com/4307514771_c089bbd71017f42.jpg'
+                    name='Restaurant Style Salsa'
+                  />
+
                 </ScrollView>
               </View>
               <View style={{ marginTop: 25, paddingHorizontal: 20 }}>
                 <Text style={{ fontSize: 24, fontWeight: '700' }}>
-                  Introducing Airbnb Plus
+                  Introducing GoodRecipe
                     </Text>
                 <Text style={{ fontWeight: '100', marginTop: 10 }}>
-                  A new selection of homes verified for quality and comfort
+                 Find new Recipe with your new eats
                 </Text>
-                <View style={{width:width-40,height:200,marginTop:20}}>
+                <View style={{ width: width - 40, height: 200, marginTop: 20 }}>
                   <Image
-                    source={{ uri:'https://www.w3schools.com/w3css/img_lights.jpg' }}
-                    style={{flex:1,height:null,width:null,resizeMode:'cover',borderWidth:1,borderRadius:5,borderColor:'#dddddd'}}
+                    source={{ uri: 'https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg' }}
+                    style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderWidth: 1, borderRadius: 5, borderColor: '#dddddd' }}
                   />
                 </View>
-                <View style={{marginTop:40}}>
-                  <Text style={{fontSize:24,fontWeight:'700',paddingHorizontal:20}}>
-                    Home around the world
+                <View style={{ marginTop: 40 }}>
+                  <Text style={{ fontSize: 24, fontWeight: '700', paddingHorizontal: 20 }}>
+                    Recommended for You
                   </Text>
-                  <View style={{paddingHorizontal:20,marginTop:20,flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between'}}>
-                    <Home width={width}/>
-                    <Home width={width}/>
-                    <Home width={width}/>
+                  <View style={{ paddingHorizontal: 20, marginTop: 20, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+                    <Home 
+                      key='35382'
+                      imageUri='http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg'
+                      name='Jalapeno Popper Grilled Cheese Sandwich'
+                      head='Recommend'
+                      publisher='Closet Cooking'
+                      width={width}
+                    />
+                    <Home 
+                      key='47024'
+                      imageUri='http://static.food2fork.com/icedcoffee5766.jpg'
+                      name='Perfect Iced Coffee'
+                      head='Hot'
+                      publisher='The Pioneer Woman'
+                      width={width}
+                    />
+                    <Home 
+                      key='47319'
+                      imageUri='http://static.food2fork.com/CrashHotPotatoes5736.jpg'
+                      name='Crash Hot Potatoes'
+                      head='Hot'
+                      publisher='The Pioneer Woman'
+                      width={width}
+                    />
+                    
                   </View>
                 </View>
               </View>

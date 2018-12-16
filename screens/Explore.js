@@ -9,7 +9,7 @@ import {
   StatusBar,
   ScrollView,
   Image,
-  Dimensions
+  Dimensions,
 
 } from 'react-native';
 import axios from 'axios';
@@ -174,8 +174,11 @@ class Explore extends Component {
                   <Text style={{ fontSize: 24, fontWeight: '700', paddingHorizontal: 20 }}>
                     Recommended for You
                   </Text>
-                  <View style={{ paddingHorizontal: 20, marginTop: 20, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+                  <View style={{ paddingHorizontal: 5,marginHorizontal:4, marginTop: 20, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
                     <Home
+                       onPress={() => this.props.navigation.navigate('RecipeDetails', {
+                        keyId: '35382'
+                      })}
                       keyId='35382'
                       imageUri='http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg'
                       name='Jalapeno Popper Grilled Cheese Sandwich'
@@ -184,6 +187,9 @@ class Explore extends Component {
                       width={width}
                     />
                     <Home
+                     onPress={() => this.props.navigation.navigate('RecipeDetails', {
+                      keyId: '47024'
+                    })}
                       keyId='47024'
                       imageUri='http://static.food2fork.com/icedcoffee5766.jpg'
                       name='Perfect Iced Coffee'
@@ -192,6 +198,9 @@ class Explore extends Component {
                       width={width}
                     />
                     <Home
+                     onPress={() => this.props.navigation.navigate('RecipeDetails', {
+                      keyId: '47319'
+                    })}
                       keyId='47319'
                       imageUri='http://static.food2fork.com/CrashHotPotatoes5736.jpg'
                       name='Crash Hot Potatoes'

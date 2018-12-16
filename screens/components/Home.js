@@ -3,14 +3,16 @@ import {
     View,
     Text,
     StyleSheet,
-    Image
+    Image,
+    TouchableOpacity
 } from 'react-native';
 
 class Home extends Component {
     render() {
         console.log(this.props)
         return (
-            <View style={{ width: 0.75*(this.props.width / 2) , height: 0.75*(this.props.width/ 2), borderWidth: 0.5, borderColor: '#dddddd' }}>
+            <TouchableOpacity onPress={this.props.onPress}>
+            <View style={{marginVertical:5, width: 0.80*(this.props.width / 2) , height: (this.props.width/ 2), borderWidth: 0.5, borderColor: '#dddddd' }}>
                 <View style={{ flex: 1 }}>
                     <Image
                         source={{ uri: this.props.imageUri }}
@@ -29,6 +31,8 @@ class Home extends Component {
                     </Text>
                 </View>
             </View>
+            </TouchableOpacity>
+
         )
     }
 }
